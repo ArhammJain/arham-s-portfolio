@@ -50,7 +50,7 @@ type SkillCategory = {
 // --- Data: AI Responses (Strictly Short One-Liners) ---
 const AI_RESPONSES: Record<string, string> = {
   "me": "I build scalable web apps with clean UI.",
-  "portfolio": "Check out my recent high performance projects.",
+  "portfolio": "Check out my recent high-performance projects.",
   "skills": "My technical stack for speed and reliability.",
   "interests": "What keeps my creativity flowing beyond code.",
   "socials": "Let's connect on these platforms.",
@@ -299,7 +299,7 @@ export default function PortfolioHome() {
         messageType = 'contact';
       }
       else {
-        // --- RANDOM FALLBACK LOGIC (Shortened Texts) ---
+        // --- RANDOM FALLBACK LOGIC ---
         messageType = 'fallback';
         
         const fallbackScenarios = [
@@ -349,143 +349,143 @@ export default function PortfolioHome() {
   return (
     <div className="relative min-h-[100dvh] w-full bg-slate-50/50 font-sans text-slate-800 selection:bg-[#1D56CF]/20 overflow-hidden">
       
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <BackgroundLines className="h-full w-full opacity-50" />
-      </div>
-
-      <div className="relative z-10 flex flex-col h-[100dvh] max-w-5xl mx-auto">
+      {/* Wrapper Component (FIXED: Wraps content now) */}
+      <BackgroundLines className="h-full w-full bg-slate-50/50">
         
-        {/* Header */}
-        <motion.div
-          layout
-          className={cn(
-            "flex flex-col items-center justify-center text-center shrink-0 px-4",
-            hasMessages ? "py-4 border-b border-slate-200/60 bg-white/50 backdrop-blur-md z-20" : "flex-1 pb-10"
-          )}
-        >
-          <div className="flex flex-col items-center">
-            <motion.div 
-              layout
-              className={cn(
-                "relative rounded-full overflow-hidden transition-all duration-500 shadow-xl",
-                hasMessages 
-                  ? "w-10 h-10 border border-white" 
-                  : "w-32 h-32 md:w-40 md:h-40 border-4 border-white mb-6"
-              )}
-            >
-               {/* eslint-disable-next-line @next/next/no-img-element */}
-               <img 
-                src="/avatar.jpeg" 
-                alt="Avatar"
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-
-            <motion.div layout className={cn("space-y-2", hasMessages && "hidden")}>
-              <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900">
-                Arham<span className="text-[#1D56CF]">.dev</span>
-              </h2>
-              <motion.p 
-                initial={{ opacity: 0 }} 
-                animate={{ opacity: 1 }}
-                className="text-lg md:text-xl text-slate-500 font-medium max-w-lg mx-auto"
-              >
-                Building digital experiences with <span className="text-[#1D56CF]">intelligence</span> and precision.
-              </motion.p>
-            </motion.div>
-            
-            {hasMessages && (
-               <motion.h3 
-                 initial={{ opacity: 0 }}
-                 animate={{ opacity: 1 }}
-                 className="text-sm font-bold text-slate-800 mt-1"
-               >
-                 Arham.dev
-               </motion.h3>
+        <div className="relative z-10 flex flex-col h-[100dvh] max-w-5xl mx-auto">
+          
+          {/* Header */}
+          <motion.div
+            layout
+            className={cn(
+              "flex flex-col items-center justify-center text-center shrink-0 px-4",
+              hasMessages ? "py-4 border-b border-slate-200/60 bg-white/50 backdrop-blur-md z-20" : "flex-1 pb-10"
             )}
-          </div>
-        </motion.div>
-
-        {/* Chat Stream */}
-        {hasMessages && (
-          <div className="flex-1 overflow-y-auto px-4 py-6 scroll-smooth w-full">
-            <div className="max-w-4xl mx-auto">
-              {messages.map((msg) => (
-                <ChatBubble 
-                  key={msg.id} 
-                  message={msg} 
-                  onActionClick={handleMenuClick} 
+          >
+            <div className="flex flex-col items-center">
+              <motion.div 
+                layout
+                className={cn(
+                  "relative rounded-full overflow-hidden transition-all duration-500 shadow-xl",
+                  hasMessages 
+                    ? "w-10 h-10 border border-white" 
+                    : "w-32 h-32 md:w-40 md:h-40 border-4 border-white mb-6"
+                )}
+              >
+                 {/* eslint-disable-next-line @next/next/no-img-element */}
+                 <img 
+                  src="/avatar.jpeg" 
+                  alt="Avatar"
+                  className="w-full h-full object-cover"
                 />
-              ))}
+              </motion.div>
+
+              <motion.div layout className={cn("space-y-2", hasMessages && "hidden")}>
+                <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900">
+                  Arham<span className="text-[#1D56CF]">.dev</span>
+                </h2>
+                <motion.p 
+                  initial={{ opacity: 0 }} 
+                  animate={{ opacity: 1 }}
+                  className="text-lg md:text-xl text-slate-500 font-medium max-w-lg mx-auto"
+                >
+                  Building digital experiences with <span className="text-[#1D56CF]">intelligence</span> and precision.
+                </motion.p>
+              </motion.div>
               
-              {isTyping && (
-                <motion.div 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="flex justify-start mb-8"
-                >
-                  <div className="bg-white border border-slate-200 px-4 py-3 rounded-2xl rounded-tl-none shadow-sm flex gap-1.5 items-center">
-                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" />
-                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce delay-75" />
-                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce delay-150" />
-                  </div>
-                </motion.div>
+              {hasMessages && (
+                 <motion.h3 
+                   initial={{ opacity: 0 }}
+                   animate={{ opacity: 1 }}
+                   className="text-sm font-bold text-slate-800 mt-1"
+                 >
+                   Arham.dev
+                 </motion.h3>
               )}
-              <div ref={chatEndRef} className="h-4" />
             </div>
-          </div>
-        )}
+          </motion.div>
 
-        {/* Footer Input Area */}
-        <div className="shrink-0 w-full px-4 pb-4 md:pb-6 z-30">
-          <div className="max-w-3xl mx-auto flex flex-col gap-4">
-            
-            {/* Input Box */}
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-500" />
-              <div className="relative flex items-center bg-white/80 backdrop-blur-xl rounded-2xl border border-white/50 shadow-lg shadow-slate-200/50 p-1.5 focus-within:ring-2 focus-within:ring-[#1D56CF]/20 transition-all">
-                <div className="pl-4 pr-3 text-slate-400">
-                  <Search size={20} />
-                </div>
-                <input
-                  type="text"
-                  placeholder="Ask me anything about my work..."
-                  className="flex-1 bg-transparent border-none outline-none py-3 text-base text-slate-800 placeholder:text-slate-400 font-medium min-w-0"
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onKeyDown={(e) => e.key === 'Enter' && handleSendMessage(inputValue)}
-                />
-                <button 
-                  onClick={() => handleSendMessage(inputValue)}
-                  disabled={!inputValue.trim()}
-                  className={cn(
-                    "p-3 rounded-xl transition-all duration-300 flex items-center justify-center shrink-0",
-                    inputValue.trim() 
-                      ? "bg-[#1D56CF] text-white shadow-md hover:bg-blue-700 hover:scale-105 active:scale-95" 
-                      : "bg-slate-100 text-slate-300 cursor-not-allowed"
-                  )}
-                >
-                  <ArrowRight size={18} strokeWidth={2.5} />
-                </button>
+          {/* Chat Stream */}
+          {hasMessages && (
+            <div className="flex-1 overflow-y-auto px-4 py-6 scroll-smooth w-full">
+              <div className="max-w-4xl mx-auto">
+                {messages.map((msg) => (
+                  <ChatBubble 
+                    key={msg.id} 
+                    message={msg} 
+                    onActionClick={handleMenuClick} 
+                  />
+                ))}
+                
+                {isTyping && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex justify-start mb-8"
+                  >
+                    <div className="bg-white border border-slate-200 px-4 py-3 rounded-2xl rounded-tl-none shadow-sm flex gap-1.5 items-center">
+                      <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" />
+                      <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce delay-75" />
+                      <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce delay-150" />
+                    </div>
+                  </motion.div>
+                )}
+                <div ref={chatEndRef} className="h-4" />
               </div>
             </div>
+          )}
 
-            {/* Quick Actions */}
-            <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar mask-fade-sides justify-start md:justify-center">
-              {MENU_ITEMS.map((item) => (
-                <ActionChip 
-                  key={item.id}
-                  icon={item.icon}
-                  label={item.label}
-                  onClick={() => handleMenuClick(item.label)}
-                />
-              ))}
+          {/* Footer Input Area */}
+          <div className="shrink-0 w-full px-4 pb-4 md:pb-6 z-30">
+            <div className="max-w-3xl mx-auto flex flex-col gap-4">
+              
+              {/* Input Box */}
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-500" />
+                <div className="relative flex items-center bg-white/80 backdrop-blur-xl rounded-2xl border border-white/50 shadow-lg shadow-slate-200/50 p-1.5 focus-within:ring-2 focus-within:ring-[#1D56CF]/20 transition-all">
+                  <div className="pl-4 pr-3 text-slate-400">
+                    <Search size={20} />
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Ask me anything about my work..."
+                    className="flex-1 bg-transparent border-none outline-none py-3 text-base text-slate-800 placeholder:text-slate-400 font-medium min-w-0"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && handleSendMessage(inputValue)}
+                  />
+                  <button 
+                    onClick={() => handleSendMessage(inputValue)}
+                    disabled={!inputValue.trim()}
+                    className={cn(
+                      "p-3 rounded-xl transition-all duration-300 flex items-center justify-center shrink-0",
+                      inputValue.trim() 
+                        ? "bg-[#1D56CF] text-white shadow-md hover:bg-blue-700 hover:scale-105 active:scale-95" 
+                        : "bg-slate-100 text-slate-300 cursor-not-allowed"
+                    )}
+                  >
+                    <ArrowRight size={18} strokeWidth={2.5} />
+                  </button>
+                </div>
+              </div>
+
+              {/* Quick Actions */}
+              <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar mask-fade-sides justify-start md:justify-center">
+                {MENU_ITEMS.map((item) => (
+                  <ActionChip 
+                    key={item.id}
+                    icon={item.icon}
+                    label={item.label}
+                    onClick={() => handleMenuClick(item.label)}
+                  />
+                ))}
+              </div>
+
             </div>
-
           </div>
-        </div>
 
-      </div>
+        </div>
+      </BackgroundLines>
     </div>
   );
 }
