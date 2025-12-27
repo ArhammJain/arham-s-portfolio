@@ -57,7 +57,7 @@ export default function ContactForm() {
             type="text"
             name="user_name"
             required
-            placeholder="John Doe"
+            placeholder="Arham Chhajed"
             className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D56CF]/20 focus:border-[#1D56CF] transition-all"
           />
         </div>
@@ -69,7 +69,7 @@ export default function ContactForm() {
             type="email"
             name="user_email"
             required
-            placeholder="john@example.com"
+            placeholder="arham@example.com"
             className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D56CF]/20 focus:border-[#1D56CF] transition-all"
           />
         </div>
