@@ -54,9 +54,9 @@ export const ExpandableSkillTags = ({
   };
 
   return (
-    <div className={cn("w-full mb-6 last:mb-0", className)}>
+    <div className={cn("w-full mb-6 last:mb-0 transition-colors duration-500", className)}>
       {title && (
-        <h4 className="mb-3 text-sm font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 pb-1">
+        <h4 className="mb-3 text-sm font-bold text-slate-400 dark:text-neutral-500 uppercase tracking-wider border-b border-slate-100 dark:border-neutral-800 pb-1">
           {title}
         </h4>
       )}
@@ -78,7 +78,7 @@ export const ExpandableSkillTags = ({
       {shouldTruncate && (
         <Button
           variant="link"
-          className="mt-2 px-0 text-xs text-[#1D56CF] h-auto font-semibold"
+          className="mt-2 px-0 text-xs text-[#1D56CF] dark:text-blue-400 h-auto font-semibold hover:no-underline opacity-80 hover:opacity-100"
           onClick={toggleExpansion}
         >
           {isExpanded ? "Show Less" : `+ ${skills.length - initialCount} More`}
@@ -102,7 +102,8 @@ const SkillBadge = ({ skill, variants }: { skill: SkillItem; variants?: Variants
       <Badge 
         className={cn(
           "px-3 py-1.5 text-sm font-medium border transition-colors cursor-default gap-1.5 whitespace-nowrap shadow-sm",
-          skill.color ? skill.color : "bg-slate-100 text-slate-700 border-slate-200",
+          // The colors are handled by the skill.color prop passed from page.tsx
+          skill.color ? skill.color : "bg-slate-100 dark:bg-neutral-900 text-slate-700 dark:text-neutral-300 border-slate-200 dark:border-neutral-800",
           skill.textColor
         )}
       >
