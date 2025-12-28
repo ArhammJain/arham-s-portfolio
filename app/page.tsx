@@ -62,13 +62,13 @@ const AI_RESPONSES: Record<string, string> = {
 const PROJECTS = [
   { 
     title: "Hospital Finder", 
-    description: "A comprehensive map-based application to find nearby hospitals using Next.js and Leaflet.", 
+    description: "A real world hospital finder built with Next.js and OpenStreetMap fast, map driven, and designed for practical, city wide healthcare discovery.", 
     videoSrc: "/project-1.mp4", 
     link: "https://hospitalfinderbyarham.vercel.app/"
   },
   { 
-    title: "Real-Time Chat", 
-    description: "Scalable chat infrastructure using WebSockets and Node.js. Supports private messaging and group channels.", 
+    title: "Real Time Chat", 
+    description: "Production ready messaging system with real architecture, real data models, and real time messaging built with Next.js and Supabase.", 
     videoSrc: "/project-2.mp4", 
     link: "https://realtimechatbyarham.vercel.app/signup"
   },
@@ -389,7 +389,7 @@ export default function PortfolioHome() {
                   animate={{ opacity: 1 }}
                   className="text-lg md:text-xl text-slate-500 font-medium max-w-lg mx-auto"
                 >
-                  Building digital experiences with <span className="text-[#1D56CF]">intelligence</span> and precision.
+                 From idea to <span className="text-[#1D56CF]">production</span> I build it <span className="text-green-600">end to end.</span>
                 </motion.p>
               </motion.div>
               
@@ -399,7 +399,7 @@ export default function PortfolioHome() {
                    animate={{ opacity: 1 }}
                    className="text-sm font-bold text-slate-800 mt-1"
                  >
-                   Arham.dev
+                   Arham's Work
                  </motion.h3>
               )}
             </div>
