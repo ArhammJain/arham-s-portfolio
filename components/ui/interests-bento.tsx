@@ -27,7 +27,7 @@ const PLAYLIST = [
   {
     title: "Superman",
     artist: "Eminem",
-    cover: "/music/images/Superman.png", 
+    cover: "/music/images/superman.png", 
     audioSrc: "/music/superman.mp3" 
   },
   {
