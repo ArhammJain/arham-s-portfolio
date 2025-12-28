@@ -323,7 +323,7 @@ export default function PortfolioHome() {
         messageType = 'fallback';
         const fallbackScenarios = [
           { text: "404: Answer not found. But my projects are fully online:", buttons: [MENU_ITEMS[1], MENU_ITEMS[2], MENU_ITEMS[0]] },
-          { text: "My AI brain just blinked. Let's connect human-to-human?", buttons: [MENU_ITEMS[4], MENU_ITEMS[5], MENU_ITEMS[0]] },
+          { text: "My AI brain just blinked. Let's connect human to human?", buttons: [MENU_ITEMS[4], MENU_ITEMS[5], MENU_ITEMS[0]] },
           { text: "Syntax Error in my brain. Send me a real message instead:", buttons: [MENU_ITEMS[5], MENU_ITEMS[1], MENU_ITEMS[4]] }
         ];
         const randomScenario = fallbackScenarios[Math.floor(Math.random() * fallbackScenarios.length)];
