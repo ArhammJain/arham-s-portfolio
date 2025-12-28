@@ -50,7 +50,7 @@ type SkillCategory = {
 // --- Data: AI Responses ---
 const AI_RESPONSES: Record<string, string> = {
   "me": "I build scalable web apps with clean UI.",
-  "portfolio": "Check out my recent high-performance projects.",
+  "portfolio": "Check out my recent high performance projects.",
   "skills": "My technical stack for speed and reliability.",
   "interests": "What keeps my creativity flowing beyond code.",
   "socials": "Let's connect on these platforms.",
@@ -62,13 +62,13 @@ const AI_RESPONSES: Record<string, string> = {
 const PROJECTS = [
   { 
     title: "Hospital Finder", 
-    description: "A comprehensive map-based application to find nearby hospitals using Next.js and Leaflet.", 
+    description: "A real world hospital finder built with Next.js and OpenStreetMap fast, map driven, and designed for practical, city wide healthcare discovery.", 
     videoSrc: "/project-1.mp4", 
     link: "https://hospitalfinderbyarham.vercel.app/"
   },
   { 
-    title: "Real-Time Chat", 
-    description: "Scalable chat infrastructure using WebSockets and Node.js. Supports private messaging and group channels.", 
+    title: "Real Time Chat", 
+    description: "Production ready messaging system with real architecture, real data models, and real time messaging built with Next.js and Supabase.", 
     videoSrc: "/project-2.mp4", 
     link: "https://realtimechatbyarham.vercel.app/signup"
   },
@@ -427,15 +427,24 @@ export default function PortfolioHome() {
               </motion.div>
 
               <motion.div layout className={cn("space-y-2", hasMessages && "hidden")}>
+<<<<<<< HEAD
+                <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900">
+                  Arham's<span className="text-[#1D56CF]">Work</span>
+=======
                 <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-                  Arham s<span className="text-[#1D56CF] dark:text-blue-500">Work</span>
+                  Arham's<span className="text-[#1D56CF] dark:text-blue-500"> Work</span>
+>>>>>>> ac1acab (Added Night Mode)
                 </h2>
                 <motion.p 
                   initial={{ opacity: 0 }} 
                   animate={{ opacity: 1 }}
                   className="text-lg md:text-xl text-slate-500 dark:text-neutral-400 font-medium max-w-lg mx-auto"
                 >
+<<<<<<< HEAD
+                 From idea to <span className="text-[#1D56CF]">production</span> I build it <span className="text-green-600">end to end.</span>
+=======
                   From idea to <span className="text-[#1D56CF] dark:text-blue-500">production</span> I build it <span className="text-green-600 dark:text-green-500">end to end.</span>
+>>>>>>> ac1acab (Added Night Mode)
                 </motion.p>
               </motion.div>
               
@@ -445,7 +454,11 @@ export default function PortfolioHome() {
                    animate={{ opacity: 1 }}
                    className="text-sm font-bold text-slate-800 dark:text-neutral-200 mt-1"
                  >
+<<<<<<< HEAD
+                   Arham's Work
+=======
                    Arham s Work
+>>>>>>> ac1acab (Added Night Mode)
                  </motion.h3>
               )}
             </div>
