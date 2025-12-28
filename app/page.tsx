@@ -380,7 +380,7 @@ export default function PortfolioHome() {
 
               <motion.div layout className={cn("space-y-2", hasMessages && "hidden")}>
                 <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-                  Arham's<span className="text-[#1D56CF] dark:text-blue-500">Work</span>
+                  Arham's<span className="text-[#1D56CF] dark:text-blue-500">   Work</span>
                 </h2>
                 <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-lg md:text-xl text-slate-500 dark:text-neutral-400 font-medium max-w-lg mx-auto">
                   From idea to <span className="text-[#1D56CF] dark:text-blue-500">production</span> I build it <span className="text-green-600 dark:text-green-500">end to end.</span>
