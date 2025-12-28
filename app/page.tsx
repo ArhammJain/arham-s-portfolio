@@ -382,7 +382,7 @@ export default function PortfolioHome() {
 
               <motion.div layout className={cn("space-y-2", hasMessages && "hidden")}>
                 <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900">
-                  Arham<span className="text-[#1D56CF]">.dev</span>
+                  Arham;s<span className="text-[#1D56CF]">Work</span>
                 </h2>
                 <motion.p 
                   initial={{ opacity: 0 }} 
