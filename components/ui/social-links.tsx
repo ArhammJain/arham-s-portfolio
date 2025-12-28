@@ -46,7 +46,7 @@ export default function SocialLinks() {
     >
       {/* 1. LinkedIn - Professional */}
       <motion.a
-        href="#" // Add your link
+        href="https://www.linkedin.com/in/arham-chhajed-ab14a4384" // Add your link
         target="_blank"
         rel="noopener noreferrer"
         variants={itemVariants}
