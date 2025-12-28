@@ -72,19 +72,26 @@ export default function InterestsBento() {
 
   const track = PLAYLIST[currentTrack];
 
+  // FIXED: Explicitly handle audio state
   const togglePlay = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        setIsPlaying(false);
       } else {
-        audioRef.current.play().catch((err) => console.error("Playback failed:", err));
+        audioRef.current.play().then(() => {
+          setIsPlaying(true);
+        }).catch((err) => {
+          console.error("Playback failed:", err);
+          setIsPlaying(false);
+        });
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
   const nextTrack = () => {
     setCurrentTrack((prev) => (prev + 1) % PLAYLIST.length);
+    // Auto-play next track
     setIsPlaying(true); 
   };
 
@@ -121,8 +128,12 @@ export default function InterestsBento() {
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.load();
+      // Only play if the state says we are playing
       if (isPlaying) {
-        audioRef.current.play().catch((err) => console.error("Auto-play failed:", err));
+        audioRef.current.play().catch((err) => {
+          console.error("Auto-play failed:", err);
+          setIsPlaying(false);
+        });
       }
     }
   }, [currentTrack]);
@@ -167,7 +178,13 @@ export default function InterestsBento() {
         />
         <div className="absolute inset-0 bg-gradient-to from-slate-950/90 via-slate-900/50 to-transparent dark:from-black/90 dark:via-black/50 pointer-events-none" />
 
-        <audio ref={audioRef} src={track.audioSrc} onTimeUpdate={handleTimeUpdate} onEnded={handleEnded} />
+        <audio 
+          ref={audioRef} 
+          src={track.audioSrc} 
+          onTimeUpdate={handleTimeUpdate} 
+          onEnded={handleEnded}
+          preload="auto" 
+        />
 
         <div className="relative z-10 p-6 flex flex-col sm:flex-row items-center gap-6 h-full">
           <div className="relative group/art">
@@ -183,7 +200,7 @@ export default function InterestsBento() {
               </motion.div>
             </AnimatePresence>
             <div className={cn(
-              "absolute inset-0 rounded-2xl bg-[#1D56CF] blur-40px transition-opacity duration-1000 -z-10",
+              "absolute inset-0 rounded-2xl bg-[#1D56CF] blur-[40px] transition-opacity duration-1000 -z-10",
               isPlaying ? "opacity-40" : "opacity-0"
             )} />
           </div>
@@ -219,15 +236,31 @@ export default function InterestsBento() {
             </div>
 
             <div className="flex items-center gap-6 mt-2">
-              <button onClick={prevTrack} className="text-slate-400 hover:text-white p-2 rounded-full"><Rewind size={20} fill="currentColor" /></button>
-              <button onClick={togglePlay} className="w-14 h-14 rounded-full bg-white text-slate-950 flex items-center justify-center shadow-lg"><Play size={22} fill="currentColor" /></button>
-              <button onClick={nextTrack} className="text-slate-400 hover:text-white p-2 rounded-full"><FastForward size={20} fill="currentColor" /></button>
+              <button onClick={prevTrack} className="text-slate-400 hover:text-white p-2 rounded-full transition-colors active:scale-90">
+                <Rewind size={20} fill="currentColor" />
+              </button>
+              
+              {/* FIXED: Toggle between Play and Pause based on state */}
+              <button 
+                onClick={togglePlay} 
+                className="w-14 h-14 rounded-full bg-white text-slate-950 flex items-center justify-center shadow-lg transition-transform active:scale-95 hover:scale-105"
+              >
+                {isPlaying ? (
+                   <Pause size={22} fill="currentColor" />
+                ) : (
+                   <Play size={22} fill="currentColor" className="ml-1" />
+                )}
+              </button>
+
+              <button onClick={nextTrack} className="text-slate-400 hover:text-white p-2 rounded-full transition-colors active:scale-90">
+                <FastForward size={20} fill="currentColor" />
+              </button>
             </div>
           </div>
         </div>
       </motion.div>
 
-      {/* 2. Building Now */}
+      {/* ... (Rest of your component: Building Now, Gaming, Offline Life) */}
       <motion.div
         variants={itemVariants}
         className="col-span-1 bg-white dark:bg-black border border-slate-200 dark:border-neutral-800 rounded-3xl p-5 shadow-sm flex flex-col transition-colors"
@@ -250,7 +283,6 @@ export default function InterestsBento() {
         </div>
       </motion.div>
 
-      {/* 3. Gaming */}
       <motion.div
         variants={itemVariants}
         className="col-span-1 bg-black border border-neutral-800 rounded-3xl p-5 shadow-lg flex flex-col relative overflow-hidden group"
@@ -270,7 +302,6 @@ export default function InterestsBento() {
         </div>
       </motion.div>
 
-      {/* 4. Offline Life */}
       <motion.div
         variants={itemVariants}
         className="col-span-1 md:col-span-2 bg-slate-50 dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 rounded-3xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 transition-colors"
