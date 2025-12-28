@@ -7,8 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // 🔴 Replace these with your actual EmailJS keys if you haven't already
 const SERVICE_ID = "service_1jsape8"; 
-const TEMPLATE_ID = "template_id";    // Replace with your Template ID
-const PUBLIC_KEY = "public_key";      // Replace with your Public Key
+const TEMPLATE_ID = "template_2a6ube5";    // Replace with your Template ID
+const PUBLIC_KEY = "Bh1KS-x9N7LZLVfiF";      // Replace with your Public Key
 
 export default function ContactForm() {
   const form = useRef<HTMLFormElement>(null);
