@@ -72,6 +72,12 @@ const PROJECTS = [
     videoSrc: "/project-2.mp4", 
     link: "https://realtimechatbyarham.vercel.app/signup"
   },
+    { 
+    title: "Rishabh's Portfolio", 
+    description: "A creative model bringing emotion, precision, and style to every frame.", 
+    videoSrc: "/pj.mp4", 
+    link: "https://rmaniac.vercel.app/"
+  },
 ];
 
 // --- Data: Skills Categories ---
@@ -427,24 +433,15 @@ export default function PortfolioHome() {
               </motion.div>
 
               <motion.div layout className={cn("space-y-2", hasMessages && "hidden")}>
-<<<<<<< HEAD
                 <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900">
-                  Arham's<span className="text-[#1D56CF]">Work</span>
-=======
-                <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-                  Arham s<span className="text-[#1D56CF] dark:text-blue-500">Work</span>
->>>>>>> ac1acab (Added Night Mode)
+                  Arham&apos;s<span className="text-[#1D56CF]">Work</span>
                 </h2>
                 <motion.p 
                   initial={{ opacity: 0 }} 
                   animate={{ opacity: 1 }}
                   className="text-lg md:text-xl text-slate-500 dark:text-neutral-400 font-medium max-w-lg mx-auto"
                 >
-<<<<<<< HEAD
                  From idea to <span className="text-[#1D56CF]">production</span> I build it <span className="text-green-600">end to end.</span>
-=======
-                  From idea to <span className="text-[#1D56CF] dark:text-blue-500">production</span> I build it <span className="text-green-600 dark:text-green-500">end to end.</span>
->>>>>>> ac1acab (Added Night Mode)
                 </motion.p>
               </motion.div>
               
@@ -454,11 +451,7 @@ export default function PortfolioHome() {
                    animate={{ opacity: 1 }}
                    className="text-sm font-bold text-slate-800 dark:text-neutral-200 mt-1"
                  >
-<<<<<<< HEAD
-                   Arham's Work
-=======
-                   Arham s Work
->>>>>>> ac1acab (Added Night Mode)
+                   Arham&apos;s Work
                  </motion.h3>
               )}
             </div>

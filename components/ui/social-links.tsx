@@ -47,11 +47,7 @@ export default function SocialLinks() {
     >
       {/* 1. LinkedIn */}
       <motion.a
-<<<<<<< HEAD
         href="https://www.linkedin.com/in/arham-chhajed-ab14a4384" // Add your link
-=======
-        href="https://www.linkedin.com/in/arham-chhajed-ab14a4384"
->>>>>>> ac1acab (Added Night Mode)
         target="_blank"
         rel="noopener noreferrer"
         variants={itemVariants}
