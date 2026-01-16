@@ -57,7 +57,7 @@ export default function ContactForm() {
             type="text"
             name="user_name"
             required
-            placeholder="Arham Chhajed"
+            placeholder="Your name"
             className="w-full bg-slate-50 dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-neutral-600 focus:outline-none focus:ring-2 focus:ring-[#1D56CF]/20 dark:focus:ring-blue-500/20 focus:border-[#1D56CF] dark:focus:border-blue-500 transition-all"
           />
         </div>
@@ -69,7 +69,7 @@ export default function ContactForm() {
             type="email"
             name="user_email"
             required
-            placeholder="arham@example.com"
+            placeholder="email@example.com"
             className="w-full bg-slate-50 dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-neutral-600 focus:outline-none focus:ring-2 focus:ring-[#1D56CF]/20 dark:focus:ring-blue-500/20 focus:border-[#1D56CF] dark:focus:border-blue-500 transition-all"
           />
         </div>
@@ -81,7 +81,7 @@ export default function ContactForm() {
             name="message"
             required
             rows={4}
-            placeholder="Tell me about your project..."
+            placeholder="Write a message..."
             className="w-full bg-slate-50 dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-neutral-600 focus:outline-none focus:ring-2 focus:ring-[#1D56CF]/20 dark:focus:ring-blue-500/20 focus:border-[#1D56CF] dark:focus:border-blue-500 transition-all resize-none"
           />
         </div>

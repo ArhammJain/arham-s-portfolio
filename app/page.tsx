@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { BackgroundLines } from "@/components/ui/background-lines"; 
 import AboutSection2 from "@/components/ui/about-section-2";
 import { ProjectCard } from "@/components/ui/project-card"; 
@@ -9,10 +9,11 @@ import { ExpandableSkillTags, SkillItem } from "@/components/ui/expandable-skill
 import InterestsBento from "@/components/ui/interests-bento";
 import SocialLinks from "@/components/ui/social-links";
 import ContactForm from "@/components/ui/contact-form"; 
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { 
-  User, Briefcase, Zap, Sparkles, Mail, ArrowRight, Search, Share2,
-  Code2, Terminal, Database, Cpu, Globe, Layers, Layout, Server, 
-  Box, BrainCircuit, Cloud, Bug, type LucideIcon, Bot, Sun, Moon
+  User, Briefcase, Zap, Sparkles, Mail, ArrowRight, Share2,
+  Code2, Terminal, Database, Globe, Layers, Layout, Server, 
+  Box, Cloud, Bug, type LucideIcon, Bot
 } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -182,10 +183,8 @@ const ChatBubble = ({ message, onActionClick }: { message: Message, onActionClic
           <div className="flex flex-col gap-3 w-full min-w-0">
             <div className={cn(
               "px-5 py-3.5 rounded-2xl text-[15px] leading-relaxed shadow-sm transition-colors duration-300",
-              // USER BUBBLE: Blue in Light, Black/Dark Gray in Dark
               isUser 
                 ? "bg-[#1D56CF] dark:bg-neutral-900 dark:border dark:border-neutral-800 text-white rounded-tr-none shadow-blue-500/10" 
-                // AI BUBBLE: White in Light, Black in Dark
                 : "bg-white dark:bg-black border border-slate-200 dark:border-neutral-800 text-slate-700 dark:text-neutral-300 rounded-tl-none"
             )}>
               {message.text}
@@ -242,38 +241,10 @@ const ActionChip = ({
   return (
     <button
       onClick={onClick}
-      className="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 shadow-sm hover:border-[#1D56CF]/50 dark:hover:border-neutral-600 hover:text-[#1D56CF] dark:hover:text-white hover:shadow-md transition-all duration-300 text-sm font-medium text-slate-600 dark:text-neutral-300 whitespace-nowrap active:scale-95"
+      className="flex items-center justify-center gap-0 md:gap-2 p-3 md:px-4 md:py-2 rounded-full bg-white dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 shadow-sm hover:border-[#1D56CF]/50 dark:hover:border-neutral-600 hover:text-[#1D56CF] dark:hover:text-white hover:shadow-md transition-all duration-300 text-sm font-medium text-slate-600 dark:text-neutral-300 active:scale-95"
     >
-      <Icon size={15} />
-      {label}
-    </button>
-  );
-};
-
-// --- Theme Switcher Component ---
-const ThemeToggle = ({ isDark, toggle }: { isDark: boolean; toggle: () => void }) => {
-  return (
-    <button
-      onClick={toggle}
-      className="fixed top-6 right-6 z-50 p-3 rounded-full bg-white/80 dark:bg-black/80 backdrop-blur-md border border-slate-200 dark:border-neutral-800 text-slate-600 dark:text-neutral-300 shadow-lg hover:scale-110 active:scale-95 transition-all duration-300 group"
-      aria-label="Toggle Theme"
-    >
-      <div className="relative w-5 h-5">
-        <Sun 
-          size={20} 
-          className={cn(
-            "absolute inset-0 transition-all duration-500 rotate-0 scale-100",
-            isDark ? "rotate-90 scale-0 opacity-0" : "rotate-0 scale-100 opacity-100 text-orange-500"
-          )} 
-        />
-        <Moon 
-          size={20} 
-          className={cn(
-            "absolute inset-0 transition-all duration-500 rotate-0 scale-0 opacity-0",
-            isDark ? "rotate-0 scale-100 opacity-100 text-blue-400" : "-rotate-90 scale-0 opacity-0"
-          )} 
-        />
-      </div>
+      <Icon size={18} className="md:w-[15px] md:h-[15px]" />
+      <span className="hidden md:inline">{label}</span>
     </button>
   );
 };
@@ -292,15 +263,21 @@ export default function PortfolioHome() {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
 
-  // Handle Theme Toggle
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    if (document.documentElement.classList.contains("dark")) {
-      document.documentElement.classList.remove("dark");
-    } else {
-      document.documentElement.classList.add("dark");
-    }
-  };
+  // Sync isDarkMode state with document class
+  useEffect(() => {
+    const updateTheme = () => {
+      setIsDarkMode(document.documentElement.classList.contains("dark"));
+    };
+    updateTheme();
+
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleSendMessage = async (text: string, category?: string) => {
     if (!text.trim()) return;
@@ -397,7 +374,10 @@ export default function PortfolioHome() {
     <div className={cn("relative min-h-[100dvh] w-full font-sans transition-colors duration-500 overflow-hidden selection:bg-[#1D56CF]/20", isDarkMode ? "bg-black text-neutral-200" : "bg-slate-50/50 text-slate-800")}>
       
       {/* Theme Switcher */}
-      <ThemeToggle isDark={isDarkMode} toggle={toggleTheme} />
+      <AnimatedThemeToggler 
+        className="fixed top-6 right-6 z-50 p-3 rounded-full bg-white/80 dark:bg-black/80 backdrop-blur-md border border-slate-200 dark:border-neutral-800 text-slate-600 dark:text-neutral-300 shadow-lg hover:scale-110 active:scale-95 transition-all duration-300"
+        duration={600}
+      />
 
       {/* Wrapper Component */}
       <BackgroundLines className={cn("h-full w-full transition-colors duration-500", isDarkMode ? "bg-black" : "bg-slate-50/50")}>
@@ -433,8 +413,8 @@ export default function PortfolioHome() {
               </motion.div>
 
               <motion.div layout className={cn("space-y-2", hasMessages && "hidden")}>
-                <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900">
-                  Arham&apos;s<span className="text-[#1D56CF]">Work</span>
+                <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                  Arham&apos;s <span className="text-[#1D56CF]">Work</span>
                 </h2>
                 <motion.p 
                   initial={{ opacity: 0 }} 
@@ -515,8 +495,8 @@ export default function PortfolioHome() {
                 </button>
               </div>
 
-              {/* Quick Actions (Normal Pill Style) */}
-              <div className="flex gap-2 overflow-x-auto pb-4 pt-1 no-scrollbar mask-fade-sides justify-start md:justify-center px-1">
+              {/* Quick Actions (Icon only on mobile, full on desktop) */}
+              <div className="flex gap-1.5 pb-4 pt-0 justify-center px-0">
                 {MENU_ITEMS.map((item) => (
                   <ActionChip 
                     key={item.id}

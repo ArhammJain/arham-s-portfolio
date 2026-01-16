@@ -1,0 +1,25 @@
+# robots.txt for interjob.in
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://interjob.in/sitemap.xml
+
+# Common directories to disallow 
+Disallow: /admin/
+Disallow: /freelancer/
+Disallow: /api/
+Disallow: /client/
+Disallow: /admin/
+Disallow: /freelancer/tutor
+Disallow: /student
+Disallow: /login/
+Disallow: /dashboard/
+
+# Block specific file types (optional)
+Disallow: /*.json$
+Disallow: /*.xml$
+
+# Crawl-delay for polite crawling (optional - some bots ignore this)
+# Crawl-delay: 10

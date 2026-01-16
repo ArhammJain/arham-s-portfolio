@@ -99,7 +99,7 @@ export default function SocialLinks() {
 
       {/* 3. Instagram */}
       <motion.a
-        href="https://www.instagram.com/arham.builds"
+        href="https://www.instagram.com/arhm.in"
         target="_blank"
         rel="noopener noreferrer"
         variants={itemVariants}
