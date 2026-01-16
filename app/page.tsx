@@ -496,7 +496,7 @@ export default function PortfolioHome() {
               </div>
 
               {/* Quick Actions (Icon only on mobile, full on desktop) */}
-              <div className="flex gap-1.5 pb-4 pt-0 justify-center px-0">
+              <div className="flex gap-2 pb-4 pt-0 justify-center px-0">
                 {MENU_ITEMS.map((item) => (
                   <ActionChip 
                     key={item.id}
